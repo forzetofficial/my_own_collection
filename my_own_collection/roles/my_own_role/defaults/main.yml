@@ -1,0 +1,4 @@
+---
+file_path: /tmp/default_file.txt
+file_content: "Default content from role"
+file_mode: "0644"

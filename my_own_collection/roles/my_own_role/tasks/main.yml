@@ -1,0 +1,11 @@
+---
+- name: Create file using custom module
+  my_own_namespace.my_own_collection.my_own_module:
+    path: "{{ file_path | default('/tmp/default_file.txt') }}"
+    content: "{{ file_content | default('Default content from role') }}"
+    mode: "{{ file_mode | default('0644') }}"
+  register: result
+
+- name: Show result
+  debug:
+    var: result

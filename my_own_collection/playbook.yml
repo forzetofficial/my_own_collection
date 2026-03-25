@@ -1,0 +1,10 @@
+---
+- name: Test my_own_role
+  hosts: localhost
+  gather_facts: false
+  roles:
+    - role: my_own_role
+      vars:
+        file_path: /tmp/role_test.txt
+        file_content: "Content from role playbook"
+        file_mode: "0755"

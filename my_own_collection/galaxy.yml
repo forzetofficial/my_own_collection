@@ -1,0 +1,14 @@
+namespace: my_own_namespace
+name: my_own_collection
+version: 1.0.0
+readme: README.md
+authors:
+  - Your Name <your.email@example.org>
+description: Custom collection with file creation module
+license:
+  - GPL-3.0-only
+tags:
+  - file
+  - module
+  - custom
+repository: https://github.com/yourusername/my_own_collection

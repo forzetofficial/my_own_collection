@@ -1,0 +1,22 @@
+---
+- name: Test idempotence of my_own_module
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Create file with my_own_module (second run)
+      my_own_module:
+        path: /tmp/test_file.txt
+        content: "Hello from custom module!"
+        mode: '0644'
+      register: result_second
+
+    - name: Show result of second run
+      debug:
+        var: result_second
+
+    - name: Verify no changes on second run
+      assert:
+        that:
+          - result_second.changed == false
+        success_msg: "✓ Idempotence test passed - no changes on second run"
+        fail_msg: "✗ Idempotence test failed - changes detected on second run"

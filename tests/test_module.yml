@@ -1,0 +1,24 @@
+---
+- name: Test my_own_module
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Create file with my_own_module (first run)
+      my_own_module:
+        path: /tmp/test_file.txt
+        content: "Hello from custom module!"
+        mode: '0644'
+      register: result_first
+
+    - name: Show result of first run
+      debug:
+        var: result_first
+
+    - name: Verify file content after first run
+      command: cat /tmp/test_file.txt
+      register: file_content
+      changed_when: false
+
+    - name: Show file content
+      debug:
+        var: file_content.stdout
